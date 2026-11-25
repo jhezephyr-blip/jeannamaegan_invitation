@@ -325,6 +325,139 @@ section {
     color:var(--sage);
     font-weight:700
 }
+.sponsors {
+    background:linear-gradient(180deg,#fbf6f1 0%,#f5eee6 100%);
+    border-top:1px solid rgba(95,104,95,.08);
+    border-bottom:1px solid rgba(95,104,95,.08);
+    position:relative;
+    overflow:hidden;
+}
+.sponsors::before {
+    content:"♡";
+    position:absolute;
+    left:6%;
+    top:24px;
+    font:36px var(--serif);
+    color:#ac8350;
+    opacity:.32;
+    pointer-events:none;
+}
+.sponsors::after {
+    content:"✿";
+    position:absolute;
+    right:6%;
+    bottom:24px;
+    font-size:32px;
+    color:#ac8350;
+    opacity:.25;
+    pointer-events:none;
+}
+.sponsors-grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:26px;
+    align-items:stretch;
+}
+.sponsor-card {
+    border:1px solid var(--line);
+    padding:32px 26px;
+    background:linear-gradient(180deg,#fffdfb 0%,#faf6f2 100%);
+    border-radius:26px;
+    box-shadow:0 10px 26px rgba(34,43,35,.04);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:transform .2s ease,box-shadow .2s ease;
+}
+.sponsor-card:hover {
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px rgba(34,43,35,.08);
+}
+.sponsor-card::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:4px;
+    background:linear-gradient(90deg,#eed2a6,#b88656,#526d60);
+    opacity:.85;
+}
+.sponsor-card::after {
+    content:"❀";
+    position:absolute;
+    right:18px;
+    top:12px;
+    color:#bb956e;
+    font-size:26px;
+    opacity:.35;
+    pointer-events:none;
+}
+.sponsor-header {
+    text-align:center;
+    padding-bottom:16px;
+    margin-bottom:20px;
+    border-bottom:1px solid rgba(229,221,208,.8);
+}
+.sponsor-badge {
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+}
+.sponsor-header h3 {
+    font-size:clamp(26px,3.5vw,34px);
+    margin:6px 0 4px;
+    color:var(--sage-deep);
+}
+.sponsor-count {
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:600;
+}
+.sponsor-list {
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:9px 12px;
+}
+.sponsor-item {
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink);
+    padding:8px 12px;
+    border-radius:12px;
+    background:rgba(255,255,255,.85);
+    border:1px solid rgba(229,221,208,.85);
+    display:flex;
+    align-items:center;
+    gap:9px;
+    box-shadow:0 2px 5px rgba(34,43,35,.02);
+    transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.sponsor-item:hover {
+    transform:translateY(-1px);
+    border-color:var(--gold);
+    background:#ffffff;
+}
+.sponsor-item::before {
+    content:"✦";
+    color:var(--gold);
+    font-size:10px;
+    flex-shrink:0;
+    line-height:1;
+}
+.sponsor-item span {
+    line-height:1.35;
+}
 .gift-intro {
     background:linear-gradient(180deg,#f9f4ef 0%,#f7f0ea 100%);
     border-top:1px solid rgba(95,104,95,.08);
@@ -1053,7 +1186,7 @@ body {
 img,svg {
  max-width:100%;
 }
-.nav,.inner,.familygrid,.gift-panel,.gift-grid,.healthgrid,.qr-grid {
+.nav,.inner,.familygrid,.gift-panel,.gift-grid,.healthgrid,.qr-grid,.sponsors-grid {
  min-width:0;
 }
 .nav {
@@ -1072,7 +1205,8 @@ img,svg {
 .gift-panel > *,
 .gift-grid > *,
 .healthgrid > *,
-.qr-grid > * {
+.qr-grid > *,
+.sponsors-grid > * {
  min-width:0;
 }
 h1,h2,h3,p,.healthitem span:last-child {
@@ -1181,8 +1315,11 @@ main,footer {
  section,.rsvp,.gift-qr-section {
   padding:54px 16px;
  }
- .card,.dresscard,.gift-card,.qr-card {
+ .card,.dresscard,.gift-card,.qr-card,.sponsor-card {
   padding:24px 20px;
+ }
+ .sponsor-list {
+  grid-template-columns:1fr;
  }
  .qr-image-container {
   max-width:240px;
@@ -1228,6 +1365,9 @@ main,footer {
      </a>
      <a href="#dress-code">
       Dress Code
+     </a>
+     <a href="#ninong-ninang">
+      Ninong &amp; Ninang
      </a>
      <a href="#health">
       Health Protocols
@@ -1438,6 +1578,90 @@ main,footer {
          </span>
         </div>
        </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="sponsors" id="ninong-ninang">
+    <div class="sec-butterfly b-float-3" style="top:12%; left:5%; width:34px; height:30px;" aria-hidden="true"><svg viewBox="0 0 48 42"><g class="wings" fill="#fceee9" stroke="#ac8350" stroke-width="1"><path d="M23 20C12 1 1 5 5 17c2 6 10 7 18 5Z"/><path d="M25 20C36 1 47 5 43 17c-2 6-10 7-18 5Z"/><path d="M23 22C13 17 8 25 14 31c4 4 8-2 10-7Z"/><path d="M25 22C35 17 40 25 34 31c-4 4-8-2-10-7Z"/></g><path d="M24 17v14M24 19l-4-5M24 19l4-5" fill="none" stroke="#657664" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+    <div class="sec-butterfly b-float-1" style="bottom:12%; right:6%; width:32px; height:28px;" aria-hidden="true"><svg viewBox="0 0 48 42"><g class="wings" fill="#dce3d6" stroke="#657664" stroke-width="1"><path d="M23 20C12 1 1 5 5 17c2 6 10 7 18 5Z"/><path d="M25 20C36 1 47 5 43 17c-2 6-10 7-18 5Z"/><path d="M23 22C13 17 8 25 14 31c4 4 8-2 10-7Z"/><path d="M25 22C35 17 40 25 34 31c-4 4-8-2-10-7Z"/></g><path d="M24 17v14M24 19l-4-5M24 19l4-5" fill="none" stroke="#ac8350" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+    <div class="sec-flower f-sway-2" style="top:18%; right:7%; width:30px; height:30px;" aria-hidden="true"><svg viewBox="0 0 40 40"><g class="flower-petals"><circle cx="20" cy="12" r="7.5" fill="#fceee9" stroke="#d49e78" stroke-width="0.9"/><circle cx="27.5" cy="17.5" r="7.5" fill="#f9e6df" stroke="#d49e78" stroke-width="0.9"/><circle cx="24.5" cy="27" r="7.5" fill="#f4dbd2" stroke="#d49e78" stroke-width="0.9"/><circle cx="15.5" cy="27" r="7.5" fill="#f7ded6" stroke="#d49e78" stroke-width="0.9"/><circle cx="12.5" cy="17.5" r="7.5" fill="#fbe9e3" stroke="#d49e78" stroke-width="0.9"/><circle cx="20" cy="20" r="4.2" fill="#eac797" stroke="#b88656" stroke-width="0.8"/><circle cx="20" cy="20" r="1.6" fill="#b88656"/></g></svg></div>
+    <div class="sec-flower f-sway-1" style="bottom:16%; left:7%; width:28px; height:28px;" aria-hidden="true"><svg viewBox="0 0 36 36"><g class="flower-petals"><ellipse cx="18" cy="10" rx="4.5" ry="6.5" fill="#fffdfa" stroke="#ac8350" stroke-width="0.8"/><ellipse cx="18" cy="26" rx="4.5" ry="6.5" fill="#fffdfa" stroke="#ac8350" stroke-width="0.8"/><ellipse cx="10" cy="18" rx="6.5" ry="4.5" fill="#fffdfa" stroke="#ac8350" stroke-width="0.8"/><ellipse cx="26" cy="18" rx="6.5" ry="4.5" fill="#fffdfa" stroke="#ac8350" stroke-width="0.8"/><ellipse cx="12.3" cy="12.3" rx="4.2" ry="5.8" transform="rotate(-45 12.3 12.3)" fill="#f6f0ea" stroke="#ac8350" stroke-width="0.7"/><ellipse cx="23.7" cy="12.3" rx="4.2" ry="5.8" transform="rotate(45 23.7 12.3)" fill="#f6f0ea" stroke="#ac8350" stroke-width="0.7"/><ellipse cx="12.3" cy="23.7" rx="4.2" ry="5.8" transform="rotate(45 12.3 23.7)" fill="#f6f0ea" stroke="#ac8350" stroke-width="0.7"/><ellipse cx="23.7" cy="23.7" rx="4.2" ry="5.8" transform="rotate(-45 23.7 23.7)" fill="#f6f0ea" stroke="#ac8350" stroke-width="0.7"/><circle cx="18" cy="18" r="3.4" fill="#eed2a6" stroke="#ac8350" stroke-width="0.8"/></g></svg></div>
+    <div class="sec-petal p-drift-1" style="top:52%; left:4%; width:19px; height:19px;" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 C18 7, 21 14, 15 20 C9 22, 4 17, 6 11 C7 6, 9 3, 12 2 Z" fill="#f8e7e1" stroke="#d8aa84" stroke-width="0.8"/></svg></div>
+    <div class="inner">
+     <div class="head">
+      <div class="eyebrow">
+       Guiding with love &amp; faith
+      </div>
+      <h2>
+       Ninong &amp; Ninang
+      </h2>
+      <p>
+       We are blessed to have you walk alongside Jeanna Maegan as guiding lights on her spiritual journey.
+      </p>
+     </div>
+     <div class="sponsors-grid">
+      <article class="sponsor-card">
+       <div class="sponsor-header">
+        <span class="sponsor-badge">
+         Godfathers
+        </span>
+        <h3>
+         Ninong
+        </h3>
+        <span class="sponsor-count">
+         14 Sponsors
+        </span>
+       </div>
+       <ul class="sponsor-list">
+        <li class="sponsor-item"><span>Carl Domingo</span></li>
+        <li class="sponsor-item"><span>Derick Velasquez</span></li>
+        <li class="sponsor-item"><span>Don Ferrer</span></li>
+        <li class="sponsor-item"><span>Don Jeric Garcia</span></li>
+        <li class="sponsor-item"><span>Jayson Ferrer</span></li>
+        <li class="sponsor-item"><span>Jelo Montevirgen</span></li>
+        <li class="sponsor-item"><span>Jet Jover</span></li>
+        <li class="sponsor-item"><span>Josh Pena</span></li>
+        <li class="sponsor-item"><span>Lorenzo Louise Labordo</span></li>
+        <li class="sponsor-item"><span>Mark Angelo Laison</span></li>
+        <li class="sponsor-item"><span>Randolf Ang</span></li>
+        <li class="sponsor-item"><span>Richard James Anos</span></li>
+        <li class="sponsor-item"><span>Ruel Macaraig</span></li>
+        <li class="sponsor-item"><span>Yuki Ang</span></li>
+       </ul>
+      </article>
+      <article class="sponsor-card">
+       <div class="sponsor-header">
+        <span class="sponsor-badge">
+         Godmothers
+        </span>
+        <h3>
+         Ninang
+        </h3>
+        <span class="sponsor-count">
+         17 Sponsors
+        </span>
+       </div>
+       <ul class="sponsor-list">
+        <li class="sponsor-item"><span>Alayssa Enriquez</span></li>
+        <li class="sponsor-item"><span>Alyssa Lim</span></li>
+        <li class="sponsor-item"><span>Angela Cruz</span></li>
+        <li class="sponsor-item"><span>Ashley Regalado</span></li>
+        <li class="sponsor-item"><span>Carla Ferrer-Roxas</span></li>
+        <li class="sponsor-item"><span>Christine Clerigo</span></li>
+        <li class="sponsor-item"><span>Goldy Jarito</span></li>
+        <li class="sponsor-item"><span>Jem Balante</span></li>
+        <li class="sponsor-item"><span>Jonica Ang</span></li>
+        <li class="sponsor-item"><span>Joy Dasol</span></li>
+        <li class="sponsor-item"><span>Kim Gonzales</span></li>
+        <li class="sponsor-item"><span>Kisses Rodriguez</span></li>
+        <li class="sponsor-item"><span>Kriselda Quilapio</span></li>
+        <li class="sponsor-item"><span>Kristine Quilapio</span></li>
+        <li class="sponsor-item"><span>Marissa Arciaga</span></li>
+        <li class="sponsor-item"><span>Mariz Arciaga</span></li>
+        <li class="sponsor-item"><span>Pamela Pereyra</span></li>
+        <li class="sponsor-item"><span>Princess Arciaga</span></li>
+       </ul>
       </article>
      </div>
     </div>
